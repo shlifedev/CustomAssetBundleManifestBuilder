@@ -12,4 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67758e1b891daf941b5f968c223020ba, type: 3}
   m_Name: ManifestCombinderWindowSaveAssets
   m_EditorClassIdentifier: 
-  targetBundlePath: []
+  targetBundlePath:
+  - E:\Unity\Zone4MBundle\AssetBundles\Android\Android
+  - E:\Unity\Zone4MClient3\AssetBundles\Android\Android
+  savePath: Assets/ManifestCombinder/Generated/CustomAndroid.txt

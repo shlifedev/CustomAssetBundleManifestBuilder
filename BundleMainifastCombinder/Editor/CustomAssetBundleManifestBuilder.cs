@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using Newtonsoft.Json;
-using System; 
+using System;
 public static class CustomAssetBundleManifestBuilder
-{
+{ 
     public static void Generate(string[] manifestBundles, ref CustomAssetBundleManifest CManifest, string writePath = null)
     {
         foreach (var manifestPath in manifestBundles)
@@ -34,6 +34,7 @@ public static class CustomAssetBundleManifestBuilder
             {
                 Debug.LogError("Load Failed AssetBundle");
             }
+         
             m_bundle.Unload(true);
         }
 
@@ -46,6 +47,13 @@ public static class CustomAssetBundleManifestBuilder
     public static void Write(CustomAssetBundleManifest data, string path)
     {
         var serialize = Newtonsoft.Json.JsonConvert.SerializeObject(data);
-        System.IO.File.WriteAllText(path,serialize);
+
+        System.IO.File.WriteAllText(path, serialize);
+        AssetDatabase.Refresh();
+        System.IO.FileInfo fi = new System.IO.FileInfo(path);
+
+        string fileName = fi.Name;
+//        if (System.IO.File.Exists(path))
+//            AssetImporter.GetAtPath(path).SetAssetBundleNameAndVariant(fileName.Split('.')[0], "");
     }
 }
